@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, defineProps } from 'vue'
 import { iconProps } from './icon'
 
 defineProps(iconProps)

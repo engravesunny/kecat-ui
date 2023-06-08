@@ -1,5 +1,3 @@
-import { PropType } from 'vue'
-
 export type PropInput<Type, Value, Validator, Default> = {
     type?: Type,
     default?:Default,

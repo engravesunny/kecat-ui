@@ -1,0 +1,35 @@
+@import './mixins/method.less';
+@import './theme/index.less';
+
+.ke-scrollbar-hidden {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.ke-scrollbar-viewer {
+    overflow: auto;
+    height: 100%;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.ke-scrollbar-thumb {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+
+    .ke-scrollbar-bar {
+        background-color: @ke-text-color-placeholder;
+        border-radius: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity .3s;
+    }
+}

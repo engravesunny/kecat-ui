@@ -75,4 +75,12 @@ describe('button', () => {
         })
         expect(wrapper.classes()).toContain('ke-button-plain')
     })
+    it('icon', () => {
+        const wrapper = mount(button, {
+            props: {
+                icon: 'rili',
+            },
+        })
+        expect(wrapper.find('.ke-icon').classes()).toContain('ke-icon-rili')
+    })
 })
