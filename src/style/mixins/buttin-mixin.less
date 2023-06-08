@@ -1,0 +1,59 @@
+@import '../theme/color.less';
+
+.buttonHoverMixin(
+@textColor: @ke-text-color-primary,
+@bgColor: @ke-color-white,
+@borderColor: color(@ke-border-color),
+@hoverBgColor:  lighten(@ke-color-primary,30),
+@hoverTextColor: @ke-color-primary,
+@hoverBorderColor: lighten(@ke-color-primary,11),
+@activeTextColor: @ke-color-primary,
+@activeBgColor: lighten(@ke-color-primary,10),
+@activeBorderColor: @ke-color-primary,
+@disabledTextColor: @ke-text-color-placeholder,
+@disabledBorderColor: @ke-border-color-light,
+@disabledBgColor: @ke-fill-color-blank
+) {
+    --ke-button-text-color: @textColor;
+    --ke-button-bg-color: @bgColor;
+    --ke-button-border-color: @borderColor;
+    --ke-button-bg-hover-color: @hoverBgColor;
+    --ke-button-text-hover-color: @hoverTextColor;
+    --ke-button-border-hover-color: @hoverBorderColor;
+    --ke-button-active-text-color: @activeTextColor;
+    --ke-button-active-bg-color: @activeBgColor;
+    --ke-button-active-border-color: @activeBorderColor;
+    --ke-button-disabled-text-color: @disabledTextColor;
+    --ke-button-disabled-bg-color: @disabledBgColor;
+    --ke-button-disabled-border-color: @disabledBorderColor;
+}
+
+// --ke-button-text-color: var(--ke-color-white);
+// --ke-button-bg-color: var(--ke-color-primary);
+// --ke-button-border-color: var(--ke-color-primary);
+// --ke-button-outline-color: var(--ke-color-primary-light-5);
+// --ke-button-active-color: var(--ke-color-primary-dark-2);
+// --ke-button-hover-text-color: var(--ke-color-white);
+// --ke-button-hover-link-text-color: var(--ke-color-primary-light-5);
+// --ke-button-hover-bg-color: var(--ke-color-primary-light-3);
+// --ke-button-hover-border-color: var(--ke-color-primary-light-3);
+// --ke-button-active-bg-color: var(--ke-color-primary-dark-2);
+// --ke-button-active-border-color: var(--ke-color-primary-dark-2);
+// --ke-button-disabled-text-color: var(--ke-color-white);
+// --ke-button-disabled-bg-color: var(--ke-color-primary-light-5);
+// --ke-button-disabled-border-color: var(--ke-color-primary-light-5);
+
+// .buttonHoverMixin(
+//     var(--ke-color-primary),
+//     var(--ke-color-primary-light-9),
+//     var(--ke-color-primary-light-5),
+//     var(--ke-color-primary),
+//     var(--ke-color-white),
+//     var(--ke-color-primary),
+//     var(--ke-color-white),
+//     var(--ke-color-primary-dark-2),
+//     var(--ke-color-primary-dark-2),
+//     var(--ke-color-white),
+//     var(--ke-color-primary-light-5),
+//     var(--ke-color-primary-light-5)
+// )

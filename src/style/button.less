@@ -1,0 +1,169 @@
+@import './mixins/reset.less';
+@import './mixins/buttin-mixin.less';
+@import './theme/color.less';
+
+.ke-button {
+    .btn-reset();
+    .buttonHoverMixin();
+}
+
+.ke-button,
+.ke-button-default {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    height: 32px;
+    user-select: none;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    white-space: nowrap;
+    padding: 10px 15px;
+    transition: .1s;
+    -webkit-appearance: none;
+    color: var(--ke-button-text-color);
+    border-radius: 5px;
+    border: 1px solid #fff;
+    font-size: var(--ke-font-size-base);
+    font-weight: var(--ke-font-weight);
+    border-color: var(--ke-button-border-color);
+    background-color: var(--ke-button-bg-color);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--ke-button-text-hover-color);
+        border-color: var(--ke-button-border-hover-color);
+        background-color: var(--ke-button-bg-hover-color);
+    }
+
+    &:active {
+        color: var(--ke-button-active-text-color);
+        border-color: var(--ke-button-active-border-color);
+        background-color: var(--ke-button-active-bg-color);
+    }
+
+    &.ke-button-disabled {
+        color: var(--ke-button-disabled-text-color);
+        border-color: var(--ke-button-disabled-border-color);
+        background-color: var(--ke-button-disabled-bg-color);
+        cursor: not-allowed;
+    }
+
+    &.ke-button-large {
+        font-size: 14px;
+        height: 40px;
+        padding: 12px 19px;
+        border-radius: 4px;
+
+        &.ke-button-round {
+            font-size: 14px;
+            height: 40px;
+            padding: 12px 19px;
+            border-radius: var(--borr-round);
+        }
+
+        &.ke-button-circle {
+            font-size: 14px;
+            height: 40px;
+            padding: 12px 19px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+    }
+
+    &.ke-button-small {
+        font-size: 12px;
+        padding: 5px 11px;
+        height: 24px;
+        border-radius: 3px;
+
+        &.ke-button-round {
+            font-size: 12px;
+            padding: 5px 11px;
+            height: 24px;
+            border-radius: var(--borr-round);
+        }
+
+        &.ke-button-circle {
+            font-size: 12px;
+            padding: 5px 11px;
+            height: 24px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+    }
+}
+
+.ke-button + .ke-button {
+    margin-left: 12px;
+}
+
+.ke-button-type-mixin(@typeColor:@ke-color-primary,@plainBgLighten:35,@disabledBorder:23) {
+    .buttonHoverMixin(
+        @ke-color-white,
+        @typeColor,
+        @typeColor,
+        lighten(@typeColor,15),
+        @ke-color-white,
+        lighten(@typeColor,15),
+        @ke-color-white,
+        darken(@typeColor,20),
+        darken(@typeColor,20),
+        @ke-color-white,
+        lighten(@typeColor,20),
+        lighten(@typeColor,20)
+    );
+
+    &.ke-button-plain {
+        .buttonHoverMixin(
+            @typeColor,
+            lighten(@typeColor,@plainBgLighten),
+            lighten(@typeColor,10),
+            @typeColor,
+            @ke-color-white,
+            @typeColor,
+            @ke-color-white,
+            darken(@typeColor,20),
+            darken(@typeColor,20),
+            @ke-color-white,
+            lighten(@typeColor,20),
+            lighten(@typeColor,20)
+        );
+
+        &.ke-button-disabled {
+            color: lighten(@typeColor, 15);
+            background-color: lighten(@typeColor, @plainBgLighten);
+            border-color: lighten(@typeColor, @disabledBorder);
+        }
+    }
+}
+
+.ke-button-primary {
+    .ke-button-type-mixin();
+}
+
+.ke-button-danger {
+    .ke-button-type-mixin(@ke-color-danger,25,20);
+}
+
+.ke-button-warning {
+    .ke-button-type-mixin(@ke-color-warning);
+}
+
+.ke-button-success {
+    .ke-button-type-mixin(@ke-color-success,42);
+}
+
+.ke-button-info {
+    .ke-button-type-mixin(@ke-color-info);
+}
+
+.ke-button-round {
+    border-radius: var(--borr-round);
+}
+
+.ke-button-circle {
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
