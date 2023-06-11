@@ -15,10 +15,10 @@ import { ref, onMounted, watch } from 'vue';
 
 const isChecked = ref<boolean>(false)
 
-// const handleTest1Change = (e:Event) => {
-//     console.log(e);
-//     console.log('handleTest1Change')
-// }
+const handleTest1Change = (e:Event) => {
+    console.log(e);
+    console.log('handleTest1Change')
+}
 
 const checkList = ref<string[]>(['Test1','Test2','Test3','Test4'])
 
