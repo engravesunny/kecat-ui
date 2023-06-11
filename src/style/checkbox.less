@@ -1,0 +1,91 @@
+@import './theme/index.less';
+
+.ke-checkbox {
+    color: var(--el-text-color-primary);
+    font-weight: var(--el-font-weight-primary);
+    font-size: var(--el-font-size-base);
+    line-height: 1;
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    user-select: none;
+    margin-right: 30px;
+
+    &.isDisabled {
+        color: var(--el-text-color-placeholder);
+        cursor: not-allowed;
+
+        &.isChecked {
+            color: var(--el-text-color-placeholder);
+        }
+    }
+
+    &.isChecked {
+        color: var(--el-color-primary);
+    }
+
+    .ke-checkbox-ipt {
+        width: 0;
+        height: 0;
+    }
+
+    .ke-checkbox-inner {
+        display: inline-block;
+        position: relative;
+        border: var(--el-border);
+        border-radius: 3px;
+        box-sizing: border-box;
+        width: 14px;
+        height: 14px;
+        background-color: #fff;
+        vertical-align: middle;
+        z-index: 0;
+        transition: border-color .25s cubic-bezier(.71, -.46, .29, 1.46), background-color .25s cubic-bezier(.71, -.46, .29, 1.46), outline .25s cubic-bezier(.71, -.46, .29, 1.46);
+
+        &.isDisabled {
+            background-color: var(--el-fill-color-light);
+            border-color: var(--el-border-color);
+            cursor: not-allowed;
+
+            &.isChecked {
+                background-color: var(--el-fill-color-light);
+                border-color: var(--el-border-color);
+            }
+
+            &::after {
+                border-color: var(--el-text-color-placeholder);
+            }
+        }
+
+        &::after {
+            box-sizing: content-box;
+            content: "";
+            border: 1px solid #fff;
+            border-left: 0;
+            border-top: 0;
+            height: 7px;
+            left: 4px;
+            position: absolute;
+            top: 1px;
+            transform: rotate(45deg) scaleY(0);
+            width: 3px;
+            transition: transform .15s ease-in .05s;
+            transform-origin: center;
+        }
+    }
+
+    .ke-checkbox-inner.isChecked {
+        background-color: var(--el-color-primary);
+        border-color: var(--el-color-primary);
+
+        &::after {
+            transform: rotate(45deg) scaleY(1);
+        }
+    }
+
+    .ke-checkbox-text {
+        padding: 0 8px;
+    }
+}

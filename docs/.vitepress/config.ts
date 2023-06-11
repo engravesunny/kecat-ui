@@ -11,7 +11,7 @@ export default {
         { text: '指南', link: '/guide/install' },
         { text: '组件', link: '/components/button/' }
       ],
-      socialLinks: [{ icon: 'github', link: 'https://github.com/huccct/tass-ui' }],
+      socialLinks: [{ icon: 'github', link: 'https://github.com/engravesunny/kecat-ui' }],
       sidebar: {
         '/guide/': [
           {
@@ -27,7 +27,10 @@ export default {
             text: '基本',
             items: [
               { text: 'Button 按钮', link: '/components/button/' },
-              { text: 'Icon 图标', link: '/components/icon/' }
+              { text: 'Icon 图标', link: '/components/icon/' },
+              { text: 'Scrollbar 滚动条', link: '/components/scrollbar/' },
+              { text: 'Layout 布局', link:'components/layout/' },
+              { text: 'Container 布局容器', link: '/components/container/' },
             ]
           },
         ]

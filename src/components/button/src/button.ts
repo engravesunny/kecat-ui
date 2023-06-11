@@ -1,4 +1,4 @@
-import { buildProps } from '@/utils/buildProps'
+import { buildProps } from '../../../utils/buildProps'
  
 export const buttonType = ['primary', 'danger', 'success', 'warning', 'info', 'default']
 export const buttonSize = ['small', 'normal', 'large']

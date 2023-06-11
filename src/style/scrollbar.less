@@ -4,20 +4,21 @@
 .ke-scrollbar-hidden {
     overflow: hidden;
     position: relative;
-    height: 100%;
 }
 
 .ke-scrollbar-viewer {
     overflow: auto;
-    height: 100%;
     scrollbar-width: none;
+    padding-right: 8px;
+    padding-bottom: 8px;
 
     &::-webkit-scrollbar {
         display: none;
     }
 }
 
-.ke-scrollbar-thumb {
+.ke-scrollbar-thumb,
+.ke-scrollbar-thumbX {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -27,8 +28,6 @@
         background-color: @ke-text-color-placeholder;
         border-radius: 20px;
         position: absolute;
-        top: 0;
-        right: 0;
         opacity: 0;
         transition: opacity .3s;
     }
