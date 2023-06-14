@@ -1,4 +1,19 @@
 <style>
+    .containerx{
+        width:100%;
+    }
+    .row{
+        width:100%;
+        display: flex !important;
+        margin-bottom:10px;
+        border-bottom: 1px solid #dcdfe6;
+        padding-bottom:10px;
+    }
+    .col{
+        width:25%;
+        font-size:14px;
+        margin-right:10px;
+    }
     .container {
         width: 100%;
         height: 300px;
@@ -310,22 +325,6 @@
 
 </details>
 
-<style>
-.containerx{
-    width:100%;
-}
-.row{
-    width:100%;
-    display: flex !important;
-    margin-bottom:10px;
-}
-.col{
-    width:25%;
-    font-size:14px;
-    margin-right:10px;
-}
-</style>
-
 ## Header API
 
 ### Header Attributes
@@ -338,7 +337,6 @@
             <div class="col"><b>类型</b></div>
             <div class="col"><b>默认值</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">height</div>
             <div class="col">顶栏高度</div>
@@ -360,7 +358,6 @@
             <div class="col"><b>类型</b></div>
             <div class="col"><b>默认值</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">width</div>
             <div class="col">侧边栏宽度</div>
@@ -382,7 +379,6 @@
             <div class="col"><b>类型</b></div>
             <div class="col"><b>默认值</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">height</div>
             <div class="col">底栏高度</div>

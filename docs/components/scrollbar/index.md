@@ -122,6 +122,8 @@ td, th, td,tr {
 .row{
     width:100%;
     display: flex !important;
+    border-bottom: 1px solid #dcdfe6;
+    padding-bottom:10px;
 }
 .col{
     width:25%;
@@ -137,7 +139,6 @@ td, th, td,tr {
             <div class="col"><b>类型</b></div>
             <div class="col"><b>默认值</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">height</div>
             <div class="col">滚动条高度</div>
@@ -157,7 +158,6 @@ td, th, td,tr {
             <div class="col"><b>类型</b></div>
             <div class="col"><b>-</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">scroll</div>
             <div class="col" style="width:40%;margin-right:10px;">当触发滚动事件时，返回滚动的距离</div>
@@ -177,7 +177,6 @@ td, th, td,tr {
             <div class="col"><b>类型</b></div>
             <div class="col"><b>-</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">handleScroll</div>
             <div class="col" style="width:40%;margin-right:10px;">触发滚动事件</div>

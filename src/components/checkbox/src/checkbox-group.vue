@@ -11,11 +11,12 @@ import { checkboxGroupContextKey } from './constant'
 
 const props = defineProps(checkGroupProps)
 
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue', 'change'])
 
 const checkList = computed(() => props.modelValue as string[])
 
 const updateList = (newList:any[]) => {
+    emits('change', newList)
     emits('update:modelValue', newList)
 }
 

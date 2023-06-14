@@ -410,6 +410,8 @@ td, th, td,tr {
     width:100%;
     display: flex !important;
     margin-bottom:10px;
+    border-bottom: 1px solid #dcdfe6;
+    padding-bottom:10px;
 }
 .col{
     width:25%;
@@ -430,7 +432,6 @@ td, th, td,tr {
             <div class="col"><b>类型</b></div>
             <div class="col"><b>默认值</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">gutter</div>
             <div class="col">栅格间隔</div>
@@ -464,7 +465,6 @@ td, th, td,tr {
             <div class="col"><b>类型</b></div>
             <div class="col"><b>默认值</b></div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">span</div>
             <div class="col">栅格占据的列数</div>

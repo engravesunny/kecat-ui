@@ -1,0 +1,109 @@
+@import './theme/index.less';
+
+.ke-input {
+    position: relative;
+    font-size: 14px;
+    display: inline-flex;
+    width: 100%;
+    line-height: 32px;
+    box-sizing: border-box;
+    vertical-align: middle;
+
+    &.isLarge {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    &.isSmall {
+        font-size: 12px;
+        height: 24px;
+    }
+
+    &.isDisabled {
+        cursor: not-allowed;
+
+        & .ke-input-wrapper {
+            background-color: #f5f7fa;
+            box-shadow: 0 0 0 1px #e4e7ed inset;
+        }
+
+        & .ke-input-inner {
+            color: #a8abb2;
+            -webkit-text-fill-color: #a8abb2;
+            cursor: not-allowed;
+        }
+    }
+
+    & .ke-input-wrapper,
+    & .ke-input-wrapper-textarea {
+        display: inline-flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        padding: 1px 11px;
+        background-color: #fff;
+        background-image: none;
+        border-radius: 4px;
+        transition: box-shadow .2s cubic-bezier(.645, .45, .355, 1);
+        transform: translateZ(0);
+
+        & .ke-input-inner {
+            position: relative;
+            width: 100%;
+            flex-grow: 1;
+            -webkit-appearance: none;
+            color: #606266;
+            font-size: inherit;
+            height: 30px;
+            line-height: 30px;
+            padding: 0;
+            outline: none;
+            border: none;
+            background: none;
+            box-sizing: border-box;
+        }
+
+        & .ke-input-suffix,
+        & .ke-input-prefix {
+            cursor: pointer;
+            padding: 0 11px 0 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        & .ke-input-suffix {
+            padding: 0 0 0 11px;
+        }
+
+        & .ke-input-limit {
+            display: inline-flex;
+            flex-shrink: 0;
+            flex-wrap: nowrap;
+            height: 100%;
+            white-space: nowrap;
+            align-items: center;
+            color: #a8abb2;
+            font-size: 12px;
+        }
+    }
+
+    & .ke-input-wrapper-textarea {
+        display: flex;
+        padding: 0;
+        position: relative;
+
+        & .ke-input-inner {
+            padding: 0 5px;
+            height: auto;
+        }
+
+        & .ke-input-textarea-limit {
+            position: absolute;
+            font-size: 12px;
+            color: #a8abb2;
+            right: 10px;
+            bottom: 0;
+        }
+    }
+}

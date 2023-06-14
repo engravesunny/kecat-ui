@@ -12,10 +12,10 @@
 // main.ts
 import { createApp } from 'vue';
 import App from './App.vue';
-import TassUI from 'tass-ui';
-import 'tass-ui/es/style.css';
+import KeUI from 'kecat-ui';
+import 'kecat-ui/style.css';
 const app = createApp(App);
-app.use(TassUI).mount('#app');
+app.use(KeUI).mount('#app');
 ```
 
 # 开始使用

@@ -1,3 +1,5 @@
+import { PropType } from 'vue'
+
 export type PropInput<Type, Value, Validator, Default> = {
     type?: Type,
     default?:Default,
@@ -5,6 +7,8 @@ export type PropInput<Type, Value, Validator, Default> = {
     validator?:((val:any)=>val is Validator) | (()=>boolean),
     value?:Value
 }
+
+export const definePropType = <T>(val: any): PropType<T> => val
 
 export type Props = Record<string, PropInput<any, any, any, any>>
 

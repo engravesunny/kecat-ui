@@ -21,6 +21,14 @@ export const checkProps = buildProps({
         type: String,
         default: '',
     },
+    large: {
+        type: Boolean,
+        default: false,
+    },
+    small: {
+        type: Boolean,
+        default: false,
+    },
 })
 
 export const getString = (a:any):any => {

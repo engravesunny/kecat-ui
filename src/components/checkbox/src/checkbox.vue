@@ -2,7 +2,7 @@
     <component
         :is="$slots.default||hasOwnLabel? 'label' : 'span'"
         class="ke-checkbox"
-        :class="{isChecked:isChecked,isDisabled:disabled||isDisabled}"
+        :class="{isChecked:isChecked,isDisabled:disabled||isDisabled,isLarge:large,isSmall:small}"
         
         @change="handleChange($event)"
     >
@@ -41,6 +41,8 @@ const slots = useSlots()
 const { checkList, updateCheckList, max, min } = inject(checkboxGroupContextKey, { 
     checkList: undefined, 
     updateCheckList: () => {}, 
+    max: undefined,
+    min: undefined,
 }) as CheckboxGroupContext
 
 const isDisabled = computed(() => {

@@ -33,6 +33,15 @@ export default {
               { text: 'Container 布局容器', link: '/components/container/' },
             ]
           },
+          {
+            text: 'Form 表单组件',
+            items: [
+              { text: 'Checkbox 多选框', link: '/components/checkbox/' },
+              {text: 'Input 输入框', link: '/components/input/' },
+              {text: 'Radio 单选框', link: '/components/radio/' },
+              { text:'Switch 开关', link: '/components/switch/'}
+            ]
+          },
         ]
       },
       lastUpdatedText: '最近更新时间',

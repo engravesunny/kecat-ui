@@ -1,34 +1,61 @@
 <template>
     <div class="container">
-        <ke-checkbox-group v-model="checkList" :max="2" :min="1">
-            <ke-checkbox label="Test1" @change="handleTest1Change" />
-            <ke-checkbox label="Test3" />
-            <ke-checkbox label="Test4" />
-            <ke-checkbox><div><span>Test2</span></div></ke-checkbox>
-        </ke-checkbox-group>
-        <ke-checkbox v-model="isChecked" label="Test4" />
+            <ke-switch 
+                v-model="switchData" 
+                active-icon="bianji" 
+                inactive-icon="bianji" 
+                :loading="loading1"
+                :before-change="beforeChange1"
+                size="large"
+            ></ke-switch>
+            &nbsp;
+            <ke-switch 
+                v-model="switchData" 
+                active-icon="bianji" 
+                inactive-icon="bianji" 
+                :loading="loading2"
+                :before-change="beforeChange2"
+                size="small"
+            ></ke-switch>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
-const isChecked = ref<boolean>(false)
+const switchData = ref(false)
+const dom = ref()
+const loading1 = ref(false)
+const loading2 = ref(false)
 
-const handleTest1Change = (e:Event) => {
-    console.log(e);
-    console.log('handleTest1Change')
+
+const beforeChange1 = () => {
+  loading1.value = true
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      loading1.value = false
+      return resolve(true)
+    }, 1000)
+  })
 }
 
-const checkList = ref<string[]>(['Test1','Test2','Test3','Test4'])
+const beforeChange2 = () => {
+  loading2.value = true
+  return new Promise((_, reject) => {
+    setTimeout(() => {
+      loading2.value = false
+      alert('failed')
+      return reject(new Error('Error'))
+    }, 1000)
+  })
+}
 
 onMounted(()=>{
-
+    console.log(dom);
 })
 
-watch(isChecked,(val) => {
-    console.log(val);
-    
+watch(switchData,(val)=>{
+    console.log('radioData改变', val);
 })
 
 </script>

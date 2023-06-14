@@ -12,6 +12,40 @@
     white-space: nowrap;
     user-select: none;
     margin-right: 30px;
+    height: 32px;
+
+    &.isLarge {
+        height: 40px;
+        font-size: 16px;
+
+        & .ke-checkbox-inner {
+            width: 16px;
+            height: 16px;
+
+            &::after {
+                top: 1px;
+                left: 5px;
+                width: 4px;
+                height: 9px;
+            }
+        }
+    }
+
+    &.isSmall {
+        height: 24px;
+        font-size: 12px;
+
+        & .ke-checkbox-inner {
+            width: 12px;
+            height: 12px;
+
+            &::after {
+                top: .5px;
+                width: 2px;
+                height: 6px;
+            }
+        }
+    }
 
     &.isDisabled {
         color: var(--el-text-color-placeholder);
