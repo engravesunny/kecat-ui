@@ -1,63 +1,38 @@
 <template>
     <div class="container">
-            <ke-switch 
-                v-model="switchData" 
-                active-icon="bianji" 
-                inactive-icon="bianji" 
-                :loading="loading1"
-                :before-change="beforeChange1"
-                size="large"
-            ></ke-switch>
-            &nbsp;
-            <ke-switch 
-                v-model="switchData" 
-                active-icon="bianji" 
-                inactive-icon="bianji" 
-                :loading="loading2"
-                :before-change="beforeChange2"
-                size="small"
-            ></ke-switch>
+      <ke-select v-model="value">
+        <ke-option v-for="item in options" :key="item.label" :label="item.label" :value="item.value"/>
+    </ke-select>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue';
+import {ref} from 'vue'
 
-const switchData = ref(false)
-const dom = ref()
-const loading1 = ref(false)
-const loading2 = ref(false)
+const value = ref('')
 
-
-const beforeChange1 = () => {
-  loading1.value = true
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      loading1.value = false
-      return resolve(true)
-    }, 1000)
-  })
-}
-
-const beforeChange2 = () => {
-  loading2.value = true
-  return new Promise((_, reject) => {
-    setTimeout(() => {
-      loading2.value = false
-      alert('failed')
-      return reject(new Error('Error'))
-    }, 1000)
-  })
-}
-
-onMounted(()=>{
-    console.log(dom);
-})
-
-watch(switchData,(val)=>{
-    console.log('radioData改变', val);
-})
-
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+]
 </script>
 
 <style lang="less" scoped>

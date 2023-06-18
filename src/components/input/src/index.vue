@@ -23,6 +23,7 @@
                     <input
                         ref="input"
                         class="ke-input-inner"
+                        :class="{isReadonly:readonly}"
                         :type="inputType"
                         :placeholder="placeholder"
                         :name="name"
@@ -30,6 +31,7 @@
                         :min="min"
                         :autofocus="autofocus"
                         :step="step"
+                        :readonly="readonly"
                         @focus="handleFocus"
                         @blur="handleBlur"
                         @input="handleInput"

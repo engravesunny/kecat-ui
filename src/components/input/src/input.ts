@@ -68,4 +68,7 @@ export const inputProps = buildProps({
     autofocus: {
         type: Boolean,
     },
+    readonly: {
+        type: Boolean,
+    },
 })

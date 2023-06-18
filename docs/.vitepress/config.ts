@@ -39,7 +39,8 @@ export default {
               { text: 'Checkbox 多选框', link: '/components/checkbox/' },
               {text: 'Input 输入框', link: '/components/input/' },
               {text: 'Radio 单选框', link: '/components/radio/' },
-              { text:'Switch 开关', link: '/components/switch/'}
+              { text:'Switch 开关', link: '/components/switch/'},
+              { text:'Slider 滑块', link: '/components/slider/'},
             ]
           },
         ]
