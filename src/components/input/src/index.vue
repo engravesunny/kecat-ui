@@ -1,7 +1,12 @@
 <template>
     <div
         class="ke-input"
-        :class="{isDisabled:disabled,isLarge:size==='large',isSmall:size==='small'}"
+        :class="{
+            isDisabled:disabled,
+            isLarge:size==='large',
+            isSmall:size==='small',
+            isSlot:$slots.default
+        }"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
     >
@@ -19,10 +24,14 @@
                     <slot name="prefix" />
                     <ke-icon :name="prefixIcon"></ke-icon>
                 </div>
-                <div class="ke-input-inner">
+                <div
+                    v-if="!(slot.default&&(slot?.default as Function)()[0].props)"
+                    class="ke-input-inner"
+                >
                     <input
                         ref="input"
                         class="ke-input-inner"
+                        :value="modelValue"
                         :class="{isReadonly:readonly}"
                         :type="inputType"
                         :placeholder="placeholder"
@@ -39,6 +48,9 @@
                         @compositionend="handleCompositionEnd"
                     >
                 </div>
+                <template v-else>
+                    <slot />
+                </template>
                 <!-- 字数限制 -->
                 <span
                     v-if="maxlength&&showWordLimit"
@@ -109,7 +121,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, nextTick, onMounted } from 'vue'
+import { ref, computed, nextTick, onMounted, useSlots } from 'vue'
 import { inputProps } from './input'
 import { isNil } from 'lodash-unified'
 
@@ -250,6 +262,7 @@ const focus = () => {
     const inputDom = input.value as HTMLInputElement
     inputDom.focus()
 }
+const slot = useSlots()
 
 onMounted(() => {
     const inputDom = input.value

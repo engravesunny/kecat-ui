@@ -9,6 +9,23 @@
     box-sizing: border-box;
     vertical-align: middle;
 
+    &.isSlot {
+        display: flex;
+        flex-wrap: wrap;
+
+        & .ke-input-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 5px;
+
+            & .ke-input-suffix {
+                position: absolute;
+                right: 11px;
+            }
+        }
+    }
+
     &.isLarge {
         font-size: 14px;
         height: 40px;
@@ -23,8 +40,15 @@
         cursor: not-allowed;
 
         & .ke-input-wrapper {
+            cursor: not-allowed;
             background-color: #f5f7fa;
             box-shadow: 0 0 0 1px #e4e7ed inset;
+            color: #a8abb2;
+
+            & .ke-input-suffix,
+            & .ke-input-prefix {
+                cursor: not-allowed;
+            }
         }
 
         & .ke-input-inner {

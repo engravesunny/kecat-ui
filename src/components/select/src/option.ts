@@ -7,4 +7,7 @@ export const SelectOptionProps = buildProps({
     value: {
         type: [Number, String],
     },
+    disabled: {
+        type: Boolean,
+    },
 })

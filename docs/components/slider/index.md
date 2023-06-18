@@ -371,7 +371,7 @@ const value_v = ref(0)
     </div>
 </div>
 
-## Radio Events
+## Slider Events
 
 <div class="example_switch">
     <div class="containerx">

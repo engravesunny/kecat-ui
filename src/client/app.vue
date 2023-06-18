@@ -1,15 +1,17 @@
 <template>
     <div class="container">
-      <ke-select v-model="value">
-        <ke-option v-for="item in options" :key="item.label" :label="item.label" :value="item.value"/>
-    </ke-select>
+      <ke-select v-model="value" multiple>
+        <ke-option v-for="item in options" :key="item.label" :disabled="item.label==='Option2'" :label="item.label" :value="item.value">
+          <span><strong>{{ item.label }}</strong></span><span style="color: blue;">{{ item.label }}</span>
+        </ke-option>
+      </ke-select>
     </div>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref,watch} from 'vue'
 
-const value = ref('')
+const value = ref([])
 
 const options = [
   {
@@ -33,6 +35,10 @@ const options = [
     label: 'Option5',
   },
 ]
+
+watch(value,(val)=>{
+    console.log('检测到变化',val);
+})
 </script>
 
 <style lang="less" scoped>
