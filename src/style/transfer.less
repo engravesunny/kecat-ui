@@ -1,0 +1,63 @@
+.ke-transfer {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    & .ke-transfer-container {
+        width: 200px;
+        max-height: 100%;
+        background-color: #fff;
+        display: inline-block;
+        text-align: left;
+        border: 1px solid #ebeef5;
+        border-radius: 5px;
+        overflow: hidden;
+
+        & .ke-transfer-filter {
+            padding: 10px;
+        }
+
+        & .ke-transfer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #303133;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #f5f7fa;
+            padding: 5px 10px;
+            border-bottom: 1px solid #ebeef5;
+
+            & .count {
+                font-size: 12px;
+                color: #909399;
+            }
+        }
+
+        & .ke-transfer-options {
+            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        & .not-data {
+            padding: 10px;
+            text-align: center;
+            color: #909399;
+            font-size: 14px;
+        }
+    }
+
+    & .ke-transfer-mid {
+        flex: 1;
+        text-align: center;
+        padding: 0 30px;
+
+        .btnText {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

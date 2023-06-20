@@ -6,7 +6,7 @@ export const checkProps = buildProps({
         defalut: 'null',
     },
     label: {
-        type: String,
+        type: [String, Number],
         default: '',
     },
     disabled: {

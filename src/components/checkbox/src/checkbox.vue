@@ -84,7 +84,11 @@ const handleChange = (e:Event) => {
     if (props.disabled || isDisabled.value) {
         return false
     }
-    emits('change', e)
+    if (checkList === undefined) {
+        emits('change', props.modelValue)
+    } else {
+        emits('change', e)
+    }
 }
 
 const handleIptChange = () => {

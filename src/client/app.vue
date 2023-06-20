@@ -1,44 +1,37 @@
 <template>
     <div class="container">
-      <ke-select v-model="value" multiple>
-        <ke-option v-for="item in options" :key="item.label" :disabled="item.label==='Option2'" :label="item.label" :value="item.value">
-          <span><strong>{{ item.label }}</strong></span><span style="color: blue;">{{ item.label }}</span>
-        </ke-option>
-      </ke-select>
+      <ke-transfer :props="props" filterable :data="data" v-model="value" :titles="['left','right']" :button-texts="['left','right']"></ke-transfer>
     </div>
 </template>
 
 <script setup lang="ts">
-import {ref,watch} from 'vue'
+import { ref } from 'vue'
 
-const value = ref([])
+interface Option {
+  keyx: number
+  labelx: string
+  disabled: boolean
+}
 
-const options = [
-  {
-    value: 'Option1',
-    label: 'Option1',
-  },
-  {
-    value: 'Option2',
-    label: 'Option2',
-  },
-  {
-    value: 'Option3',
-    label: 'Option3',
-  },
-  {
-    value: 'Option4',
-    label: 'Option4',
-  },
-  {
-    value: 'Option5',
-    label: 'Option5',
-  },
-]
+const props = {
+  key:'keyx',
+  label:'labelx',
+}
 
-watch(value,(val)=>{
-    console.log('检测到变化',val);
-})
+const generateData = () => {
+  const data: Option[] = []
+  for (let i = 1; i <= 15; i++) {
+    data.push({
+      keyx: i,
+      labelx: `Option ${i}`,
+      disabled: i % 4 === 0,
+    })
+  }
+  return data
+}
+
+const data = ref<Option[]>(generateData())
+const value = ref([1,2,3,4,5,6])
 </script>
 
 <style lang="less" scoped>

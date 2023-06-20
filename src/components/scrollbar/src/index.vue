@@ -274,21 +274,31 @@ const init = () => {
     }
 }
 
-const listenResize = () => {
-    const changeBarSize = () => {
-        const ch = container.value?.scrollHeight as number
-        const vh = container.value?.clientHeight as number
-        if (ch > vh) {
-            computedBarHeight()
-        }
-        const cw = container.value?.scrollWidth as number
-        const vw = container.value?.clientWidth as number
-        if (cw > vw) {
-            computedBarWidth()
-        }
+const updateBarSize = () => {
+    const ch = container.value?.scrollHeight as number
+    const vh = container.value?.clientHeight as number
+    
+    if (ch > vh) {
+        computedBarHeight()
+        initY()
+        shouldShowBar.value = true
+    } else {
+        barHeight.value = 0
     }
+    const cw = container.value?.scrollWidth as number
+    const vw = container.value?.clientWidth as number
+    if (cw > vw) {
+        computedBarWidth()
+        initX()
+        shouldShowBar.value = true
+    } else {
+        barWidth.value = 0
+    }
+}
+
+const listenResize = () => {
     const observer = new ResizeObserver(() => {
-        changeBarSize()
+        updateBarSize()
     })
     observer.observe(container.value as HTMLElement)
 }
@@ -302,6 +312,7 @@ defineExpose({
     setViewScrollLeft,
     setViewScrollTop,
     handleScroll,
+    updateBarSize,
 })
 
 defineOptions({
