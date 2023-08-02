@@ -1,0 +1,101 @@
+@import './theme/index.less';
+@import './common/index.less';
+
+.ke-calendar {
+    width: 100%;
+    user-select: none;
+
+    & .ke-calendar-main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .weeks {
+            color: #606266;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            padding: 0 0 20px 0;
+
+            li {
+                text-align: center;
+            }
+        }
+
+        .days {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            border-top: 1px solid @ke-border-color;
+            border-left: 1px solid @ke-border-color;
+
+            li {
+                padding: 10px;
+                box-sizing: border-box;
+                width: 100%;
+                aspect-ratio: 1;
+                border-right: 1px solid @ke-border-color;
+                border-bottom: 1px solid @ke-border-color;
+                cursor: pointer;
+                color: #303133;
+
+                &.nextMonth,
+                &.lastMonth {
+                    color: @ke-text-color-disabled;
+                }
+
+                &.active {
+                    color: @ke-color-primary;
+                    background-color: lighten(@ke-color-primary, 30);
+                }
+
+                &:hover {
+                    background-color: lighten(@ke-color-primary, 30);
+                }
+            }
+        }
+    }
+
+    & .ke-calendar-header {
+        width: 100%;
+        padding: 12px 20px;
+        border-bottom: 1px solid @ke-border-color;
+        color: #303133;
+
+        .ke-button {
+            margin: 0;
+        }
+
+        .btn1 {
+            border-radius: 3px 0 0 3px;
+            margin-right: -1px;
+
+            &:hover {
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        .btn2 {
+            margin-right: -1px;
+            border-radius: 0;
+
+            &:hover {
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        .btn3 {
+            border-radius: 0 3px 3px 0;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+    }
+}

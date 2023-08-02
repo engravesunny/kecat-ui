@@ -21,7 +21,7 @@
                     v-model="leftIpt"
                     clearable
                     prefix-icon="bianji"
-                    placeholder="State Abbreviations"
+                    :placeholder="filterPlaceholder?filterPlaceholder:'State Abbreviations'"
                 ></ke-input>
             </div>
             <ke-scrollbar
@@ -94,7 +94,7 @@
                     v-model="rightIpt"
                     clearable
                     prefix-icon="bianji"
-                    placeholder="State Abbreviations"
+                    :placeholder="filterPlaceholder?filterPlaceholder:'State Abbreviations'"
                 ></ke-input>
             </div>
             <ke-scrollbar
@@ -131,6 +131,7 @@
 import { transferProps, dataItem } from './transfer'
 import { onBeforeMount, ref, computed, nextTick } from 'vue'
 
+const emit = defineEmits(['change', 'left-check-change', 'right-check-change'])
 const props = defineProps(transferProps)
 const leftBar = ref()
 const rightBar = ref()
@@ -197,22 +198,23 @@ const handleLeftClick = async () => {
     rightTotalList.value = rightTotalList.value.filter(rtl => !targetList.some(tarl => tarl === rtl.key))
     // 3.右边选中清空
     rightCheckedList.value = []
+
+    emit('change', { dir: 'left', keys: targetList })
     await nextTick()
     leftBar.value.updateBarSize()
     rightBar.value.updateBarSize()
 }
 const handleRightClick = async () => {
-    // 1.将右边选中的添加到左边原有的
     const targetList = leftCheckedList.value
     const originList = rightTotalList.value
     const resultList = (totalList.value as dataItem[]).filter(data => targetList.some(tar => tar === data.key)
         || originList.some(ori => ori.key === data.key))
     rightTotalList.value = resultList
     checkAllLeft.value = false
-    // 2.右边清空
     leftTotalList.value = leftTotalList.value.filter(rtl => !targetList.some(tarl => tarl === rtl.key))
-    // 3.右边选中清空
     leftCheckedList.value = []
+
+    emit('change', { dir: 'right', keys: targetList })
     await nextTick()
     leftBar.value.updateBarSize()
     rightBar.value.updateBarSize()
@@ -223,6 +225,7 @@ const leftItemChange = () => {
     } else {
         checkAllLeft.value = false
     }
+    emit('left-check-change', leftCheckedList.value)
 }
 const rightItemChange = () => {
     if (rightCheckedList.value.length === rightTotalList.value.length) {
@@ -230,6 +233,7 @@ const rightItemChange = () => {
     } else {
         checkAllRight.value = false
     }
+    emit('right-check-change', rightCheckedList.value)
 }
 
 export interface Prop {

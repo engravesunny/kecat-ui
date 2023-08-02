@@ -41,7 +41,10 @@ export default {
               {text: 'Radio 单选框', link: '/components/radio/' },
               { text:'Switch 开关', link: '/components/switch/'},
               { text:'Slider 滑块', link: '/components/slider/'},
-              { text:"Select 选择器",link:'/components/select/' }
+              { text:"Select 选择器",link:'/components/select/' },
+              { text:"Transfer 穿梭框",link:'/components/transfer/' },
+              { text:"Upload 上传",link:'/components/upload/' },
+              { text:"Card 卡片",link:'/components/card/' },
             ]
           },
         ]

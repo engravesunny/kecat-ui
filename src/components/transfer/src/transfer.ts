@@ -26,4 +26,7 @@ export const transferProps = buildProps({
     buttonTexts: {
         type: Array,
     },
+    filterPlaceholder: {
+        type: String,
+    },
 })
