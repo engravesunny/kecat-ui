@@ -1,0 +1,1 @@
+export const handleFrontZero = (num:string|number) :number|string => (+num < 10 ? '0' + num : num)

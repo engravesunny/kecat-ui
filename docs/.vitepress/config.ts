@@ -47,6 +47,12 @@ export default {
               { text:"Card 卡片",link:'/components/card/' },
             ]
           },
+          {
+            text: '数据展示',
+            items: [
+              { text: 'Calendar 日历', link: '/components/calendar/' },
+            ]
+          }
         ]
       },
       lastUpdatedText: '最近更新时间',

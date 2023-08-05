@@ -1,5 +1,10 @@
 @import './theme/index.less';
-@import './common/index.less';
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
 .ke-calendar {
     width: 100%;
@@ -38,6 +43,8 @@
                 border-bottom: 1px solid @ke-border-color;
                 cursor: pointer;
                 color: #303133;
+                display: flex;
+                flex-wrap: wrap;
 
                 &.nextMonth,
                 &.lastMonth {

@@ -1,5 +1,8 @@
 <template>
-    <div class="ke-calendar">
+    <div
+        v-if="date"
+        class="ke-calendar"
+    >
         <ke-container>
             <ke-header>
                 <div class="ke-calendar-header">
@@ -10,7 +13,7 @@
                         <ke-button
                             size="small"
                             class="btn1"
-                            @click="handleLastClick(curDay)"
+                            @click="handleLastClick(1)"
                         >
                             Previous Month
                         </ke-button>
@@ -24,7 +27,7 @@
                         <ke-button
                             size="small"
                             class="btn3"
-                            @click="handleNextClick(curDay)"
+                            @click="handleNextClick(1)"
                         >
                             Next Mouth
                         </ke-button>
@@ -49,7 +52,17 @@
                                 class="lastMonth"
                                 @click="handleLastClick(lastMonthDayCount - (curMonthFirDayWeek - item))"
                             >
-                                <span>{{ lastMonthDayCount - (curMonthFirDayWeek - item) }}</span>
+                                <span v-if="!$slots['date-cell']">
+                                    {{ lastMonthDayCount - (curMonthFirDayWeek - item) }}
+                                </span>
+                                <slot
+                                    v-else
+                                    name="date-cell"
+                                    :date="`
+                                    ${curYear}-
+                                    ${handleFrontZero(curMonth)}-
+                                    ${handleFrontZero(lastMonthDayCount - (curMonthFirDayWeek - item))}`"
+                                />
                             </li>
                         </template>
                         <li
@@ -60,7 +73,13 @@
                             }"
                             @click="handleDayClick(item)"
                         >
-                            <span>{{ item }}</span>
+                            <span v-if="!$slots['date-cell']">{{ item }}</span>
+                            <slot
+                                v-else
+                                name="date-cell"
+                                :date="`${curYear}-${handleFrontZero(curMonth + 1)}-${handleFrontZero(item)}`"
+                                :is-selected="item === curDay"
+                            />
                         </li>
                         <li
                             v-for="item in curMonthLastDayWeek"
@@ -68,7 +87,12 @@
                             class="nextMonth"
                             @click="handleNextClick(item)"
                         >
-                            <span>{{ item }}</span>
+                            <span v-if="!$slots['date-cell']">{{ item }}</span>
+                            <slot
+                                v-else
+                                name="date-cell"
+                                :date="`${curYear}-${handleFrontZero(+curMonth + 2)}-${handleFrontZero(item)}`"
+                            />
                         </li>
                     </ul>
                 </div>
@@ -81,10 +105,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { isRunYear } from './utils'
+import { handleFrontZero } from '../../../utils/frontZero'
+import { calendarProps } from './calendar'
 
-const date = new Date()
+const props = defineProps(calendarProps)
+const emit = defineEmits(['update:modelValue'])
+const date = props.modelValue ? new Date(props.modelValue) : new Date()
 const curMonth = ref(date.getMonth())
 const curYear = ref(date.getFullYear())
 const curDay = ref(date.getDate())
@@ -158,8 +186,46 @@ const handleClickToday = () => {
     curDay.value = newDate.getDate()
 }
 
+const handleDateSelect = (option:string) => {
+    switch (option) {
+        case 'next-year':
+            curYear.value += 1
+            curMonth.value = 0
+            curDay.value = 1
+            break
+        case 'pre-year':
+            curYear.value -= 1
+            curYear.value = curYear.value < 0 ? 0 : curYear.value
+            curMonth.value = 0
+            curDay.value = 1
+            break
+        case 'next-month':
+            handleNextClick(1)
+            break
+        case 'pre-month':
+            handleLastClick(1)
+            break
+        default:
+            let date = option.split('-')
+            curYear.value = +date[0]
+            curMonth.value = +date[1] - 1
+            curDay.value = +date[2]
+    }
+}
+
+const changeValue = () => {
+    emit('update:modelValue', `${curYear.value}-${curMonth.value + 1}-${curDay.value}`)
+}
+
+watch([curYear, curMonth, curDay], () => {
+    changeValue()
+})
+
 defineOptions({
     name: 'KeCalendar',
+})
+defineExpose({
+    handleDateSelect,
 })
 </script>
 
